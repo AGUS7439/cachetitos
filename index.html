@@ -1,0 +1,1095 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10070d">
+<title>Para ti, cachetitos ♡</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --fondo: #10070d;
+  --rosa: #eaa0b5;
+  --dorado: #e4bd90;
+  --texto: #fff1f5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(ellipse at 50% 15%, #421b2d, transparent 65%),
+    #10070d;
+  color: var(--texto);
+  font-family: "DM Sans", sans-serif;
+}
+
+h1, h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+#petalos {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.petalo {
+  position: absolute;
+  top: -50px;
+  color: #e99aae;
+  opacity: .6;
+  animation: caer linear infinite;
+}
+
+@keyframes caer {
+  to {
+    transform: translate(90px, 110vh) rotate(540deg);
+  }
+}
+
+.contenedor {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 850px);
+  margin: auto;
+  padding: 25px 20px 80px;
+}
+
+.barra-superior {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--dorado);
+}
+
+.musica {
+  padding: 11px 16px;
+  border: 1px solid #ffffff40;
+  border-radius: 30px;
+  background: #ffffff0c;
+  color: white;
+  letter-spacing: 0;
+}
+
+.inicio {
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.etiqueta {
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--dorado);
+}
+
+.rosa-inicio {
+  font-size: 110px;
+  margin: 25px;
+  filter: drop-shadow(0 0 35px #ec4b7b);
+  animation: florecer 3s ease both, flotar 5s ease-in-out infinite;
+}
+
+@keyframes florecer {
+  from {
+    opacity: 0;
+    transform: scale(.15) rotate(-30deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes flotar {
+  50% {
+    translate: 0 -12px;
+  }
+}
+
+h1 {
+  font-size: clamp(55px, 11vw, 105px);
+  line-height: .95;
+  margin: 15px 0;
+}
+
+h1 em {
+  color: var(--rosa);
+}
+
+.descripcion {
+  max-width: 530px;
+  line-height: 2;
+  font-size: 15px;
+  color: #e9cbd6;
+}
+
+.boton {
+  margin-top: 30px;
+  padding: 16px 30px;
+  border: 0;
+  border-radius: 40px;
+  background: linear-gradient(120deg, #f2b4c6, #c96a89);
+  color: #2b0c1a;
+  font-weight: 600;
+  box-shadow: 0 10px 40px #c44d7840;
+  transition: .3s;
+}
+
+.boton:hover {
+  transform: translateY(-4px);
+}
+
+.secundario {
+  background: transparent;
+  color: #f4d4df;
+  border: 1px solid #df9cb56b;
+  box-shadow: none;
+}
+
+.progreso {
+  display: none;
+  position: sticky;
+  top: 12px;
+  z-index: 10;
+  padding: 15px;
+  border: 1px solid #ffffff20;
+  border-radius: 30px;
+  background: #1b0e19e8;
+  backdrop-filter: blur(15px);
+  align-items: center;
+  gap: 15px;
+  font-size: 12px;
+  color: var(--rosa);
+}
+
+.linea {
+  flex: 1;
+  height: 4px;
+  background: #ffffff20;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.relleno {
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #c56888, #f3c3af);
+  transition: width .6s;
+}
+
+.capitulo {
+  display: none;
+  min-height: 80vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  animation: aparecer 1s ease both;
+}
+
+.capitulo.activo {
+  display: flex;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.numero {
+  color: var(--dorado);
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+
+.adorno {
+  font-size: 65px;
+  margin: 22px 0;
+  filter: drop-shadow(0 0 20px #e34d7b);
+}
+
+h2 {
+  font-size: clamp(42px, 8vw, 70px);
+  line-height: 1.05;
+  margin: 10px 0 30px;
+}
+
+.carta {
+  width: 100%;
+  max-width: 680px;
+  padding: clamp(25px, 5vw, 52px);
+  border: 1px solid #e7a7bc45;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #3b1b2aab, #180d16e8);
+  box-shadow: 0 25px 80px #0008;
+  text-align: left;
+}
+
+.carta p {
+  font-size: clamp(15px, 2.7vw, 17px);
+  line-height: 2.1;
+  color: #f2dce5;
+  margin: 0 0 23px;
+}
+
+.carta p:last-child {
+  margin-bottom: 0;
+}
+
+.acciones {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.sobre {
+  padding: 40px;
+  border: 1px solid #e7a7bc65;
+  border-radius: 20px;
+  background: #ffffff0b;
+  color: var(--texto);
+  cursor: pointer;
+  margin: 25px auto;
+  transition: .3s;
+}
+
+.sobre:hover {
+  transform: scale(1.04);
+}
+
+.sobre .emoji {
+  font-size: 85px;
+}
+
+.oculto {
+  display: none;
+}
+
+.corazon {
+  position: fixed;
+  z-index: 50;
+  pointer-events: none;
+  color: #f5a4bb;
+  animation: subir 1.7s ease-out forwards;
+}
+
+@keyframes subir {
+  to {
+    transform: translateY(-140px) scale(1.7);
+    opacity: 0;
+  }
+}
+
+/* Sorpresa final */
+
+.final {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-y: auto;
+  padding: 45px 22px 70px;
+  text-align: center;
+  background: radial-gradient(
+    ellipse at center,
+    #4b172c,
+    #10060e 75%
+  );
+}
+
+.final.visible {
+  display: flex;
+  animation: aparecer 1s both;
+}
+
+.aura {
+  position: absolute;
+  top: 65px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: #e42b6540;
+  filter: blur(75px);
+  pointer-events: none;
+}
+
+.flor {
+  position: relative;
+  width: 210px;
+  height: 245px;
+  flex-shrink: 0;
+  margin: 15px auto;
+  filter: drop-shadow(0 0 25px #d63b65);
+}
+
+.tallo {
+  position: absolute;
+  top: 115px;
+  left: 102px;
+  width: 6px;
+  height: 125px;
+  border-radius: 5px;
+  background: linear-gradient(#45804a, #143b28);
+  transform-origin: top;
+  animation: crecer 2s both;
+}
+
+@keyframes crecer {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+.hoja {
+  position: absolute;
+  top: 160px;
+  left: 105px;
+  width: 52px;
+  height: 26px;
+  background: #2b6c45;
+  border-radius: 100% 0 100% 0;
+  transform: rotate(-25deg);
+}
+
+.hoja.izquierda {
+  left: 52px;
+  transform: scaleX(-1) rotate(-25deg);
+}
+
+.petalo-flor {
+  position: absolute;
+  top: 34px;
+  left: 72px;
+  width: 68px;
+  height: 105px;
+  border-radius: 65% 65% 42% 42%;
+  background: radial-gradient(
+    ellipse at 35% 25%,
+    #ff9ab4,
+    #c30b42 60%,
+    #5d061e
+  );
+  border: 1px solid #ff9db166;
+  transform-origin: 50% 95%;
+  opacity: 0;
+  animation: abrirFlor 2.7s ease forwards;
+  animation-delay: var(--espera);
+}
+
+@keyframes abrirFlor {
+  from {
+    opacity: 0;
+    transform: rotate(0) scale(.1);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(var(--rotacion)) scale(1);
+  }
+}
+
+.centro-flor {
+  position: absolute;
+  top: 77px;
+  left: 89px;
+  width: 35px;
+  height: 45px;
+  background: linear-gradient(#ff7197, #850822);
+  border-radius: 60% 60% 50% 50%;
+  opacity: 0;
+  animation: aparecer 1s 2.5s forwards;
+}
+
+.mensaje-final {
+  position: relative;
+  max-width: 590px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.5s, transform 1.5s;
+}
+
+.mensaje-final.mostrar {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mensaje-final p {
+  font-size: 16px;
+  line-height: 2;
+  color: #f3d8e1;
+}
+
+.mensaje-final .especial {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(28px, 6vw, 40px);
+  color: #f5bacd;
+}
+
+.pie {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #b990a1;
+}
+
+@media (max-width: 600px) {
+  .contenedor { padding: 20px 17px 70px; }
+  .rosa-inicio { font-size: 85px; }
+  .carta { padding: 27px 23px; }
+  .capitulo { min-height: 85vh; }
+  .final { padding-top: 25px; }
+  .boton { padding: 15px 22px; }
+}
+</style>
+</head>
+
+<body>
+
+<div id="petalos" aria-hidden="true"></div>
+
+<main class="contenedor">
+
+<header class="barra-superior">
+  <span>UNA HISTORIA PARA TI ♡</span>
+  <button class="musica" id="botonMusica" type="button">
+    ♫ Música
+  </button>
+</header>
+
+<section class="inicio" id="inicio">
+  <div class="etiqueta">
+    Un pequeño detalle, hecho con cariño
+  </div>
+
+  <div class="rosa-inicio">🌹</div>
+
+  <h1>
+    Para ti,<br>
+    <em>cachetitos.</em>
+  </h1>
+
+  <p class="descripcion">
+    Hay personas que llegan sin avisar y, sin darse cuenta,
+    hacen que nuestros días se sientan un poquito más bonitos.
+    Quería contarte algo sobre eso…
+  </p>
+
+  <button class="boton" id="comenzar" type="button">
+    Comenzar nuestra pequeña historia ✦
+  </button>
+
+  <p class="descripcion" style="font-size:12px">
+    Busca un lugar tranquilo y disfruta cada palabra.
+  </p>
+</section>
+
+<div class="progreso" id="progreso">
+  <span id="contador">01 / 07</span>
+  <div class="linea">
+    <div class="relleno" id="relleno"></div>
+  </div>
+  <span>Para ti ♡</span>
+</div>
+
+<div id="capitulos"></div>
+
+<footer class="pie">
+  HECHO CON CARIÑO, SOLO PARA TI ♡
+</footer>
+
+</main>
+
+<!-- Sorpresa final -->
+<div class="final" id="final"
+     role="dialog"
+     aria-modal="true"
+     aria-label="Una última sorpresa">
+
+  <div class="aura"></div>
+
+  <div class="flor" aria-hidden="true">
+    <div class="tallo"></div>
+    <div class="hoja"></div>
+    <div class="hoja izquierda"></div>
+
+    <div class="petalo-flor"
+         style="--rotacion:-80deg;--espera:.2s"></div>
+    <div class="petalo-flor"
+         style="--rotacion:80deg;--espera:.4s"></div>
+    <div class="petalo-flor"
+         style="--rotacion:-48deg;--espera:.7s"></div>
+    <div class="petalo-flor"
+         style="--rotacion:48deg;--espera:.9s"></div>
+    <div class="petalo-flor"
+         style="--rotacion:-20deg;--espera:1.2s"></div>
+    <div class="petalo-flor"
+         style="--rotacion:20deg;--espera:1.4s"></div>
+
+    <div class="centro-flor"></div>
+  </div>
+
+  <div class="mensaje-final" id="mensajeFinal">
+
+    <div class="etiqueta">
+      Una última cosa, cachetitos
+    </div>
+
+    <h2>Esta rosa es para ti.</h2>
+
+    <p>
+      Quisiera que al verla recuerdes aquel día en que
+      nuestros caminos se cruzaron. Desde entonces,
+      conocerte ha sido uno de esos pequeños regalos
+      que la vida da sin avisar.
+    </p>
+
+    <p>
+      Hay algo más que quisiera contarte, pero no aquí.
+      Algunas palabras merecen una mirada, una sonrisa
+      y un momento que podamos recordar.
+    </p>
+
+    <p class="especial">
+      La siguiente parte de esta historia
+      quiero vivirla contigo.
+    </p>
+
+    <p class="etiqueta">
+      Continuará… cuando nos volvamos a ver.
+    </p>
+
+    <button class="boton secundario"
+            id="cerrarFinal"
+            type="button">
+      Volver a nuestra historia ♡
+    </button>
+  </div>
+</div>
+
+<!-- Música de fondo -->
+<audio
+  id="audio"
+  src="BONITA.mp3"
+  autoplay
+  loop
+  preload="auto">
+</audio>
+
+<script>
+// =====================================
+// LOS SIETE CAPÍTULOS
+// =====================================
+
+const capitulos = [
+  {
+    titulo: "Antes de que llegaras",
+    icono: "✧",
+    textos: [
+      `Dicen que las personas llegan a nuestra vida por alguna
+      razón, y aunque nunca he sabido si eso es verdad,
+      desde que te conocí he comenzado a creer que algunas
+      coincidencias pueden convertirse en recuerdos muy especiales.`,
+
+      `Antes de conocerte, mis días transcurrían como cualquier
+      otro. Tenía mis cosas, mis pendientes y mi rutina.
+      Nunca imaginé que un día cualquiera terminaría
+      conociendo a alguien que poco a poco comenzaría
+      a ocupar un lugar tan bonito en mis pensamientos.`,
+
+      `Y lo más curioso es que todo comenzó de una manera
+      tan sencilla, sin planearlo, sin buscarlo y sin imaginar
+      lo que vendría después.`,
+
+      `Pero entonces llegaste tú, cachetitos…`
+    ]
+  },
+  {
+    titulo: "Aquel día que te vi por primera vez",
+    icono: "🌹",
+    textos: [
+      `Hay días que parecen normales, pero con el tiempo
+      descubrimos que tienen algo especial. Para mí,
+      uno de esos días fue cuando te vi por primera vez.`,
+
+      `Todavía recuerdo aquel momento. No sé exactamente
+      cómo explicarlo, pero hubo algo en ti que llamó
+      mi atención. Tal vez fue tu manera de ser,
+      tu presencia o simplemente esa sensación tan bonita
+      que a veces aparece sin que sepamos por qué.`,
+
+      `Lo que sí recuerdo es que me quedé con ganas de saber
+      más de ti. De conocer cómo eras, qué cosas te hacían
+      feliz, qué te gustaba y qué historias tenías por contar.`,
+
+      `Jamás imaginé que aquel primer encuentro terminaría
+      convirtiéndose en el comienzo de tantos pensamientos bonitos.`,
+
+      `Y aunque quizá tú no lo sepas, me alegra muchísimo
+      que nuestros caminos se hayan cruzado aquel día.`
+    ]
+  },
+  {
+    titulo: "Desde que comenzamos a hablar",
+    icono: "♡",
+    textos: [
+      `¿Sabes algo, cachetitos? Una de las cosas que más me
+      gustan de haberte conocido es que, sin darte cuenta,
+      comenzaste a hacer diferentes algunos momentos de mis días.`,
+
+      `Al principio eran conversaciones normales, mensajes
+      que iban y venían, preguntas sencillas y pequeñas bromas.
+      Pero poco a poco comencé a darme cuenta de que esperaba
+      con ilusión volver a saber de ti.`,
+
+      `Hay ocasiones en las que puedo estar ocupado,
+      cansado o pensando en mil cosas, pero basta con
+      leer un mensaje tuyo para que aparezca una sonrisa
+      en mi rostro.`,
+
+      `Quizá para ti son conversaciones comunes, pero para mí
+      algunas se han convertido en pequeños recuerdos
+      que guardo con mucho cariño.`,
+
+      `Y si pudiera elegir algo de todo esto, sería seguir
+      teniendo muchas conversaciones contigo, de esas
+      que empiezan hablando de cualquier cosa y terminan
+      convirtiéndose en lo mejor del día.`
+    ]
+  },
+  {
+    titulo: "Las pequeñas cosas que me gustan de ti",
+    icono: "✿",
+    textos: [
+      `Hay algo que he aprendido desde que te conozco:
+      no siempre necesitamos grandes momentos para
+      descubrir lo especial que puede ser alguien.`,
+
+      `En ocasiones son las cosas más pequeñas las que
+      terminan teniendo mayor significado.`,
+
+      `Me gusta tu manera de ser, esa forma tan tuya de
+      expresarte, los detalles que tienes y la naturalidad
+      con la que puedes hacer que una conversación
+      se vuelva bonita.`,
+
+      `Me gusta ir descubriendo nuevas cosas de ti,
+      porque siento que todavía hay muchas historias,
+      sueños, gustos y pequeños detalles tuyos
+      que me encantaría conocer.`,
+
+      `No necesito que seas diferente ni que intentes
+      impresionar a nadie. Me gusta conocerte tal como eres,
+      con tus ocurrencias, tus días buenos, tus días
+      complicados y todas esas pequeñas cosas
+      que te hacen ser tú.`,
+
+      `Porque a veces lo verdaderamente especial no es
+      encontrar a alguien perfecto, sino conocer a alguien
+      cuya manera de ser nos haga sentir algo bonito.`
+    ]
+  },
+  {
+    titulo: "Si pudiera pedir un deseo",
+    icono: "✦",
+    textos: [
+      `Si en este momento pudiera pedir un deseo,
+      no pediría algo imposible ni extraordinario.`,
+
+      `Pediría tener la oportunidad de seguir conociéndote.`,
+
+      `De compartir más momentos contigo, de reírnos por
+      cosas sin importancia, de escuchar tus historias,
+      de conocer tus lugares favoritos y descubrir todas
+      esas pequeñas cosas que todavía no sé de ti.`,
+
+      `Me gustaría que algún día pudiéramos recordar cómo
+      comenzó todo y sonreír al pensar que algo tan sencillo
+      terminó regalándonos recuerdos tan bonitos.`,
+
+      `No sé qué nos tenga preparado el futuro,
+      y tampoco quiero adelantarme a cosas
+      que todavía no han sucedido.`,
+
+      `Lo único que sé es que me gusta mucho lo que he podido
+      conocer de ti hasta ahora, y quiero disfrutar los
+      momentos contigo de una manera bonita,
+      sincera y sin prisas.`
+    ]
+  },
+  {
+    titulo: "Una carta que escribí especialmente para ti",
+    icono: "✉",
+    sobre: true,
+    textos: [
+      `Queridos cachetitos… Tal vez te preguntes por qué
+      decidí hacerte esta página en lugar de simplemente
+      enviarte un mensaje. La respuesta es sencilla:
+      quería regalarte algo diferente.`,
+
+      `Algo que pudieras abrir cuando quisieras,
+      algo que no fuera solamente una conversación más
+      y que te recordara lo bonito que ha sido
+      para mí conocerte.`,
+
+      `Quería dedicarte un poquito de mi tiempo,
+      porque considero que las cosas más bonitas
+      no siempre son las más costosas, sino aquellas
+      que hacemos pensando sinceramente en alguien.`,
+
+      `No sé si esta página logre sacarte una sonrisa,
+      pero mientras la imaginaba, pensaba en cómo
+      te sentirías al descubrir cada una de estas palabras.`,
+
+      `Y si mientras lees esto has sonreído aunque sea
+      una vez, entonces todo habrá valido la pena.`,
+
+      `Gracias por permitirme conocerte, por cada conversación,
+      por los momentos que hemos compartido y por todas
+      esas pequeñas cosas que quizá tú no notas,
+      pero que yo aprecio.`,
+
+      `Espero que este pequeño regalo se convierta
+      en uno de tus recuerdos bonitos.`
+    ]
+  },
+  {
+    titulo: "Hay algo que todavía no te he contado…",
+    icono: "🌹",
+    textos: [
+      `Cachetitos… Si has llegado hasta aquí,
+      significa que ya descubriste algunas de las cosas
+      que he querido decirte desde hace tiempo.`,
+
+      `Pero todavía hay algo más.`,
+
+      `Algo que no quiero escribir en una pantalla,
+      ni esconder entre mensajes, ni decir de cualquier manera.`,
+
+      `Porque hay palabras que merecen un momento especial.
+      Un momento en el que no exista una pantalla entre nosotros,
+      en el que pueda mirarte a los ojos y decirte con mis propias
+      palabras aquello que he estado guardando.`,
+
+      `No quiero adelantarte lo que será,
+      porque hay sorpresas que son mucho más bonitas
+      cuando llegan en el momento indicado.`,
+
+      `Por ahora, solamente quiero que te quedes con algo:
+      me alegra mucho haberte conocido, me alegra que aquel
+      día nuestros caminos se cruzaran y me alegra saber
+      que todavía podemos crear muchos recuerdos bonitos.`,
+
+      `Así que guarda esta pequeña historia, cachetitos…
+      porque todavía falta una parte muy especial.`,
+
+      `Y esa parte quiero compartirla contigo, en persona.`
+    ]
+  }
+];
+
+// =====================================
+// GENERAR LOS CAPÍTULOS
+// =====================================
+
+const zona = document.getElementById("capitulos");
+
+capitulos.forEach((cap, indice) => {
+  const seccion = document.createElement("section");
+  seccion.className = "capitulo";
+  seccion.id = "capitulo-" + indice;
+
+  const carta = document.createElement("div");
+  carta.className = "carta";
+
+  cap.textos.forEach(texto => {
+    const p = document.createElement("p");
+    p.textContent = texto.trim();
+    carta.appendChild(p);
+  });
+
+  const numero = document.createElement("div");
+  numero.className = "numero";
+  numero.textContent =
+    `CAPÍTULO ${String(indice + 1).padStart(2, "0")} DE 07`;
+
+  const adorno = document.createElement("div");
+  adorno.className = "adorno";
+  adorno.textContent = cap.icono;
+
+  const titulo = document.createElement("h2");
+  titulo.textContent = cap.titulo;
+
+  seccion.append(numero, adorno, titulo);
+
+  if (cap.sobre) {
+    const sobre = document.createElement("button");
+    sobre.className = "sobre";
+    sobre.id = "abrirSobre";
+    sobre.type = "button";
+    sobre.innerHTML = `
+      <div class="emoji">💌</div>
+      <p>Toca el sobre para descubrir tu carta</p>
+    `;
+
+    carta.id = "cartaSecreta";
+    carta.classList.add("oculto");
+    seccion.appendChild(sobre);
+  }
+
+  seccion.appendChild(carta);
+
+  const acciones = document.createElement("div");
+  acciones.className = "acciones";
+
+  if (indice > 0) {
+    const anterior = document.createElement("button");
+    anterior.className = "boton secundario";
+    anterior.type = "button";
+    anterior.textContent = "← Anterior";
+    anterior.onclick = () => mostrarCapitulo(indice - 1);
+    acciones.appendChild(anterior);
+  }
+
+  const siguiente = document.createElement("button");
+  siguiente.className = "boton";
+  siguiente.type = "button";
+  siguiente.textContent = indice === 6
+    ? "Descubrir la sorpresa final ♡"
+    : "Siguiente capítulo →";
+
+  siguiente.onclick = () => {
+    if (
+      indice === 5 &&
+      document.getElementById("cartaSecreta")
+        .classList.contains("oculto")
+    ) {
+      document.getElementById("abrirSobre")
+        .scrollIntoView({ behavior: "smooth" });
+      return;
+    }
+
+    if (indice === 6) {
+      mostrarFinal();
+    } else {
+      mostrarCapitulo(indice + 1);
+    }
+  };
+
+  acciones.appendChild(siguiente);
+  seccion.appendChild(acciones);
+  zona.appendChild(seccion);
+});
+
+// =====================================
+// NAVEGACIÓN
+// =====================================
+
+function mostrarCapitulo(indice) {
+  document.getElementById("inicio").style.display = "none";
+  document.getElementById("progreso").style.display = "flex";
+
+  document.querySelectorAll(".capitulo").forEach((cap, i) => {
+    cap.classList.toggle("activo", i === indice);
+  });
+
+  document.getElementById("contador").textContent =
+    String(indice + 1).padStart(2, "0") + " / 07";
+
+  document.getElementById("relleno").style.width =
+    ((indice + 1) / 7 * 100) + "%";
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  crearCorazones(10);
+}
+
+// =====================================
+// MÚSICA AUTOMÁTICA
+// =====================================
+
+const audio = document.getElementById("audio");
+const botonMusica = document.getElementById("botonMusica");
+
+audio.volume = 0.65;
+audio.loop = true;
+
+let musicaPausadaPorUsuario = false;
+
+async function reproducirMusica() {
+  if (musicaPausadaPorUsuario) return;
+
+  try {
+    await audio.play();
+    botonMusica.textContent = "♫ Pausar música";
+  } catch (error) {
+    botonMusica.textContent = "♫ Activar música";
+  }
+}
+
+// Intentar reproducir al abrir el enlace
+window.addEventListener("load", reproducirMusica);
+
+// Reproducir al primer toque si autoplay fue bloqueado
+function activarConPrimerToque() {
+  if (audio.paused && !musicaPausadaPorUsuario) {
+    reproducirMusica();
+  }
+}
+
+document.addEventListener(
+  "pointerdown",
+  activarConPrimerToque,
+  { once: true }
+);
+
+// También se activa al iniciar la historia
+document.getElementById("comenzar").onclick = () => {
+  reproducirMusica();
+  mostrarCapitulo(0);
+};
+
+// Botón de música
+botonMusica.addEventListener("click", () => {
+  if (audio.paused) {
+    musicaPausadaPorUsuario = false;
+    reproducirMusica();
+  } else {
+    musicaPausadaPorUsuario = true;
+    audio.pause();
+    botonMusica.textContent = "♫ Reproducir música";
+  }
+});
+
+audio.addEventListener("error", () => {
+  botonMusica.textContent = "♫ Audio no disponible";
+  console.error("No se pudo cargar BONITA.mp3");
+});
+
+// =====================================
+// ABRIR CARTA SECRETA
+// =====================================
+
+document.getElementById("abrirSobre").onclick = () => {
+  document.getElementById("abrirSobre").style.display = "none";
+  document.getElementById("cartaSecreta").classList.remove("oculto");
+  crearCorazones(25);
+};
+
+// =====================================
+// SORPRESA FINAL
+// =====================================
+
+let temporizador;
+
+function mostrarFinal() {
+  const final = document.getElementById("final");
+  const mensaje = document.getElementById("mensajeFinal");
+
+  mensaje.classList.remove("mostrar");
+  final.classList.remove("visible");
+
+  void final.offsetWidth;
+
+  final.classList.add("visible");
+  document.body.style.overflow = "hidden";
+
+  clearTimeout(temporizador);
+
+  temporizador = setTimeout(() => {
+    mensaje.classList.add("mostrar");
+    crearCorazones(35);
+  }, 3500);
+}
+
+document.getElementById("cerrarFinal").onclick = () => {
+  document.getElementById("final").classList.remove("visible");
+  document.body.style.overflow = "";
+  mostrarCapitulo(6);
+};
+
+// =====================================
+// PÉTALOS ANIMADOS
+// =====================================
+
+const fondoPetalos = document.getElementById("petalos");
+
+for (let i = 0; i < 28; i++) {
+  const petalo = document.createElement("span");
+
+  petalo.className = "petalo";
+  petalo.textContent = i % 4 === 0 ? "♡" : "❀";
+
+  petalo.style.left = Math.random() * 100 + "%";
+  petalo.style.fontSize = (11 + Math.random() * 15) + "px";
+  petalo.style.animationDuration =
+    (10 + Math.random() * 15) + "s";
+  petalo.style.animationDelay =
+    (-Math.random() * 25) + "s";
+
+  fondoPetalos.appendChild(petalo);
+}
+
+// =====================================
+// CORAZONES LUMINOSOS
+// =====================================
+
+function crearCorazones(cantidad) {
+  for (let i = 0; i < cantidad; i++) {
+    const corazon = document.createElement("span");
+
+    corazon.className = "corazon";
+    corazon.textContent = i % 2 ? "♡" : "✦";
+
+    corazon.style.left =
+      (20 + Math.random() * 60) + "vw";
+    corazon.style.top =
+      (30 + Math.random() * 50) + "vh";
+    corazon.style.fontSize =
+      (15 + Math.random() * 22) + "px";
+
+    document.body.appendChild(corazon);
+
+    setTimeout(() => corazon.remove(), 1700);
+  }
+}
+
+</script>
+</body>
+</html>
